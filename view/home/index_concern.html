@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>屌丝社区</title>
+    <style>
+        body { padding-top: 70px; }
+
+    </style>
+    <!--全局css-->
+    <link href="/static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/static/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css?v=4.1.0" rel="stylesheet">
+    <!-- 全局js -->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+</head>
+<body class="gray-bg">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Bootstrap theme</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav ">
+                <li class="active"><a href="/home/index/index">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">登录</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">国服卡牌 <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/home/index/my">我的</a></li>
+                        <li><a href="#">Something </a></li>
+                        <li class="divider"> here</li>
+                        <li><a href="#">注销</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="wrapper wrapper-content   animated fadeInRight blog">
+    <div class="row ">
+        <!--左边-->
+        <div class="col-sm-7 col-lg-offset-1">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <span class="text-muted small pull-right">最后更新：<i class="fa fa-clock-o"></i> 2015-09-01 12:00</span>
+                    <h2>关注管理</h2>
+                    <p>
+                        所有客户必须通过邮件验证
+                    </p>
+                    <div class="input-group">
+                        <input type="text" placeholder="查找用户" class="input form-control">
+                        <span class="input-group-btn">
+                                        <button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> 搜索</button>
+                                </span>
+                    </div>
+                    <div class="clients-list">
+                        <ul class="nav nav-tabs">
+                            <span class="pull-right small text-muted">1406 关注</span>
+                            <li class="active"><a  href="/home/index/concern"><i class="fa fa-user"></i> 关注</a>
+                            </li>
+                            <li class=""><a  href="/home/index/fans"><i class="fa fa-briefcase"></i> 粉丝</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab-1" class="tab-pane active">
+                                <div class="full-height-scroll">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover">
+                                            <tbody>
+                                            <tr>
+                                                <td class="client-avatar"><img alt="image" src="/static/img/a2.jpg"> </td>
+                                                <td><a data-toggle="tab" href="#contact-1" class="client-link">袁岳</a>
+                                                </td>
+                                                <td> 瑞安市海诚机械有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-envelope"> </i>
+                                                </td>
+                                                <td> gravida@qq.com</td>
+                                                <td class="client-status"><span class="label label-primary">已验证</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar"><img alt="image" src="/static/img/a3.jpg"> </td>
+                                                <td><a data-toggle="tab" href="#contact-2" class="client-link">王利锋</a>
+                                                </td>
+                                                <td>上海沃精机械制造有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-envelope"> </i>
+                                                </td>
+                                                <td> rooney@sina.com</td>
+                                                <td class="client-status"><span class="label label-primary">已验证</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar"><img alt="image" src="/static/img/a4.jpg"> </td>
+                                                <td><a data-toggle="tab" href="#contact-3" class="client-link">张有为 </a>
+                                                </td>
+                                                <td>张家港同丰机械制造有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-phone"> </i>
+                                                </td>
+                                                <td> 13209009485</td>
+                                                <td class="client-status"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a5.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-4" class="client-link">李全福</a>
+                                                </td>
+                                                <td>东莞市益健包装机械有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-phone"> </i>
+                                                </td>
+                                                <td> 15709758904</td>
+                                                <td class="client-status"><span class="label label-warning">等待验证</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a6.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-2" class="client-link">吴俭俭</a>
+                                                </td>
+                                                <td>温州轩特包装机械有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-phone"> </i>
+                                                </td>
+                                                <td> 14790086438</td>
+                                                <td class="client-status"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a7.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-3" class="client-link">萧志林</a>
+                                                </td>
+                                                <td>佛山市顺德区威利丰贸易有限公司 </td>
+                                                <td class="contact-type"><i class="fa fa-envelope"> </i>
+                                                </td>
+                                                <td> pacheco@163.com</td>
+                                                <td class="client-status"><span class="label label-info">未验证</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a1.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-1" class="client-link">沈家华</a>
+                                                </td>
+                                                <td>黄岛区涵海润机械厂</td>
+                                                <td class="contact-type"><i class="fa fa-envelope"> </i>
+                                                </td>
+                                                <td> Simon@erta.com</td>
+                                                <td class="client-status"><span class="label label-primary">已验证</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a3.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-2" class="client-link">王利锋</a>
+                                                </td>
+                                                <td>上海沃精机械制造有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-envelope"> </i>
+                                                </td>
+                                                <td> rooney@sina.com</td>
+                                                <td class="client-status"><span class="label label-warning">等待验证</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a4.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-3" class="client-link">张有为 </a>
+                                                </td>
+                                                <td>张家港同丰机械制造有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-phone"> </i>
+                                                </td>
+                                                <td> 18604789823</td>
+                                                <td class="client-status"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a5.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-4" class="client-link">李全福</a>
+                                                </td>
+                                                <td>东莞市益健包装机械有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-phone"> </i>
+                                                </td>
+                                                <td> 15600002345</td>
+                                                <td class="client-status"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a2.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-1" class="client-link">袁岳</a>
+                                                </td>
+                                                <td> 瑞安市海诚机械有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-envelope"> </i>
+                                                </td>
+                                                <td> gravida@qq.com</td>
+                                                <td class="client-status"><span class="label label-danger">已删除</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a7.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-2" class="client-link">萧志林</a>
+                                                </td>
+                                                <td>佛山市顺德区威利丰贸易有限公司 </td>
+                                                <td class="contact-type"><i class="fa fa-envelope"> </i>
+                                                </td>
+                                                <td> pacheco@163.com</td>
+                                                <td class="client-status"><span class="label label-primary">已验证</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a5.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-3" class="client-link">李全福</a>
+                                                </td>
+                                                <td>东莞市益健包装机械有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-phone"> </i>
+                                                </td>
+                                                <td> 18897654904</td>
+                                                <td class="client-status"><span class="label label-info">未验证</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a6.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-4" class="client-link">吴俭俭</a>
+                                                </td>
+                                                <td>温州轩特包装机械有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-phone"> </i>
+                                                </td>
+                                                <td> 18290876923</td>
+                                                <td class="client-status"><span class="label label-primary">已验证</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a7.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-2" class="client-link">萧志林</a>
+                                                </td>
+                                                <td>佛山市顺德区威利丰贸易有限公司 </td>
+                                                <td class="contact-type"><i class="fa fa-envelope"> </i>
+                                                </td>
+                                                <td> pacheco@163.com</td>
+                                                <td class="client-status"><span class="label label-primary">已验证</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a1.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-1" class="client-link">沈家华</a>
+                                                </td>
+                                                <td>黄岛区涵海润机械厂</td>
+                                                <td class="contact-type"><i class="fa fa-envelope"> </i>
+                                                </td>
+                                                <td> Simon@erta.com</td>
+                                                <td class="client-status"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a3.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-3" class="client-link">王利锋</a>
+                                                </td>
+                                                <td>上海沃精机械制造有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-envelope"> </i>
+                                                </td>
+                                                <td> rooney@sina.com</td>
+                                                <td class="client-status"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a4.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-4" class="client-link">张有为 </a>
+                                                </td>
+                                                <td>张家港同丰机械制造有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-phone"> </i>
+                                                </td>
+                                                <td> 13023428593</td>
+                                                <td class="client-status"><span class="label label-primary">已验证</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a5.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-1" class="client-link">李全福</a>
+                                                </td>
+                                                <td>东莞市益健包装机械有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-phone"> </i>
+                                                </td>
+                                                <td> 13209304434</td>
+                                                <td class="client-status"><span class="label label-info">未验证</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a2.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-2" class="client-link">袁岳</a>
+                                                </td>
+                                                <td> 瑞安市海诚机械有限公司</td>
+                                                <td class="contact-type"><i class="fa fa-envelope"> </i>
+                                                </td>
+                                                <td> gravida@qq.com</td>
+                                                <td class="client-status"><span class="label label-warning">等待验证</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="client-avatar">
+                                                    <a href=""><img alt="image" src="/static/img/a7.jpg">
+                                                    </a>
+                                                </td>
+                                                <td><a data-toggle="tab" href="#contact-4" class="client-link">萧志林</a>
+                                                </td>
+                                                <td>佛山市顺德区威利丰贸易有限公司 </td>
+                                                <td class="contact-type"><i class="fa fa-envelope"> </i>
+                                                </td>
+                                                <td> pacheco@163.com</td>
+                                                <td class="client-status"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--右边-->
+        <div class="col-sm-3">
+            <div class="ibox ">
+
+                <div class="ibox-content">
+                    <div class="tab-content">
+                        <div id="contact-1" class="tab-pane active">
+                            <div class="row m-b-lg">
+                                <div class="col-lg-4 text-center">
+                                    <h2>张有为</h2>
+
+                                    <div class="m-b-sm">
+                                        <img alt="image" class="img-circle" src="/static/img/a2.jpg" style="width: 62px">
+                                    </div>
+                                    <a class="btn btn-danger btn-circle btn-outline" type="button"><i class="fa fa-heart"></i> </a>
+                                </div>
+                                <div class="col-lg-8">
+                                    <!--<p>  <button class="btn btn-danger btn-circle" type="button"><i class="fa fa-heart"></i>  </button>-->
+                                    <!--<a class="btn btn-danger btn-circle btn-outline" type="button"><i class="fa fa-heart"></i> </a>-->
+                                    <!--</p>-->
+                                    <h3>
+                                        个人简介
+                                    </h3>
+
+                                    <p>
+                                        李彦宏，百度公司创始人、董事长兼首席执行官，全面负责百度公司的战略规划和运营划和运营划和运营划和运营管理。
+                                    </p>
+                                    <p>
+                                        <a href="/home/index/concern">
+                                            关注(50)
+                                        </a>
+                                    </p>
+                                    <p>
+                                        <a href="/home/index/fans">
+                                            粉丝(100)
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="/static/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script>
+    $(function () {
+        $('.full-height-scroll').slimScroll({
+            height: '100%'
+        });
+    });
+</script>
+</body>
+</html>

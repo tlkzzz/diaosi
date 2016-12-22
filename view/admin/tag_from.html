@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title> - <%= title%></title>
+    <%include include/head.html%>
+    <link rel="stylesheet" type="text/css" href="<%=_web.static%>/static/js/plugins/jcolor/css/jcolor.min.css">
+    <link rel="stylesheet" type="text/css" href="<%=_web.static%>/static/js/plugins/jcolor/css/examples.css">
+    <!--<script src="<%=_web.static%>/static/js/plugins/jcolor/js/jquery.js"></script>-->
+    <script src="<%=_web.static%>/static/js/plugins/jcolor/js/jcolor.min.js"></script>
+    <script src="<%=_web.static%>/static/js/plugins/jcolor/js/examples.js"></script>
+</head>
+
+<body class="gray-bg">
+
+
+<div class="wrapper wrapper-content">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="ibox text-center animated fadeInRightBig">
+                <div class="ibox-title">
+                    <h5><%= title%>表单</h5>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal" id="signupForm">
+                        <div class="form-group">
+                            <input type="hidden" name="id" value="<%=tag.id%>">
+                            <label class=" control-label col-xs-4 col-sm-3"><span><font color="red">*</font></span>标签名称：</label>
+                            <div class="col-sm-8">
+                                <input type="text" id="name" name="name" value="<%=tag.name%>"  placeholder="标签名称" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class=" control-label col-xs-4 col-sm-3"><span><font color="red">*</font></span>颜色：</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input type="text" readonly="true" id="color" name="color" value="<%=tag.color%>" placeholder="颜色" class="form-control">
+                                    <span class="input-group-btn">
+                                          <div class="my-color-picker" style="color: <%=tag.color%>"></div>
+                                   </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class=" control-label col-xs-4 col-sm-3"><span><font color="red">*</font></span>排序：</label>
+                            <div class="col-sm-8">
+                                <input type="number" id="sort" name="sort" value="<%=tag.sort%>" placeholder="排序" class="form-control">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-8">
+                                <button class="btn btn-success btn-rounded" type="submit">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+</body>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.my-color-picker').colorpicker();
+        $('.my-color-picker').on('newcolor', function (ev, colorpicker) {
+            $('#color').val(colorpicker.toString('rgb'))
+        })
+
+
+        $("#signupForm").validate({
+            rules: {
+                name: {
+                    required: true,
+                    maxlength:20
+                },
+                color: {
+                    required: true,
+                },
+                sort: {
+                    required: true,
+                    range:[0,999]
+                },
+            },
+            messages: {
+                name: {
+                    required: "请输入标签名称",
+                    max: "标签名称不能超过20个字符"
+                },
+                color: {
+                    required: "请选择颜色代码",
+                },
+                sort: {
+                    required: "必须在0-999数字之间",
+                },
+            },
+            errorPlacement: function(error, element) {
+                element.attr("placeholder",error.html())
+//                error.appendTo(element.parent());
+            },
+
+            submitHandler: function() {
+                var data = $("#signupForm").serialize();
+                $.post('<%=_web.url%>/admin/tag/addedit',data,function (data) {
+                    if(data.s==1){
+                        layer.msg(data.msg,{time: 2000, icon:1})
+                        setTimeout("javascript:location.href='/admin/tag/info'", 2000);
+                    }else {
+                        layer.msg(data.msg,{time: 2000, icon:2})
+                    }
+
+                })
+            }
+        })
+    })
+</script>
+</html>
