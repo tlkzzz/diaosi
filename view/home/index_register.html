@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>屌丝社区</title>
+    <style>
+        body { padding-top: 70px; }
+
+    </style>
+    <!--全局css-->
+    <link href="/static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/static/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="/static/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <!-- 全局js -->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/plugins/toastr/toastr.min.js"></script>
+</head>
+<body class="gray-bg">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Bootstrap theme</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav ">
+                <li class="active"><a href="/home/index/index">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">登录</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">国服卡牌 <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/home/index/my">我的</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">注销</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="wrapper wrapper-content   animated fadeInRight blog">
+    <div class="row ">
+        <div class="col-sm-7 col-lg-offset-1">
+            <div class="ibox ">
+                <div class="ibox-content">
+                <form class="form-horizontal m-t" id="signupForm">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-8">
+                           <h2>用户注册</h2>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">用户名：</label>
+                        <div class="col-sm-8">
+                            <input  id="username" name="username" class="form-control" type="text" aria-required="true" aria-invalid="true" class="error">
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 3-20个字符</span>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">E-mail：</label>
+                        <div class="col-sm-8">
+                            <input id="email" name="email" class="form-control" type="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">手机：</label>
+                        <div class="col-sm-8">
+                            <input id="phone" name="phone" class="form-control" type="number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">密码：</label>
+                        <div class="col-sm-8">
+                            <input id="password" name="password" class="form-control" type="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">确认密码：</label>
+                        <div class="col-sm-8">
+                            <input id="confirm_password" name="confirm_password" class="form-control" type="password">
+                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 请再次输入您的密码</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-3">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" class="checkbox" id="agree" name="agree"> 我已经认真阅读并同意《屌丝社区使用协议》
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-sm-8 col-sm-offset-3">
+                            <button  id="b"  class="btn btn-primary" type="button"><i class="fa fa-check"></i>立即注册</button>
+                        </div>
+                    </div>
+                </form>
+
+                </div>
+            </div>
+          </div>
+        <div class="col-sm-3">
+            <div class="ibox ">
+
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="">
+                    <div class="form-group">
+                        <div class="col-sm-9 col-sm-offset-2">
+                           <h2>社交账号登陆</h2>
+                            <hr>
+                        </div>
+                        <div class="col-sm-9 col-sm-offset-2">
+                            <a class="btn btn-danger btn-outline">
+                                <i class="fa fa-qq"> </i> 使用QQ账号登录
+                            </a>
+                        </div>
+                        <div class="col-sm-9 col-sm-offset-2">
+                            <a class="btn btn-success btn-outline">
+                                <i class="fa fa-weixin"> </i> 使用微信账号登录
+                            </a>
+                        </div>
+                        <div class="col-sm-9 col-sm-offset-2">
+                            <a class="btn btn-info btn-outline">
+                                <i class="fa fa-weibo"> </i> 使用微博账号登录
+                            </a>
+                        </div>
+                        <div class="col-sm-12"><hr></div>
+                        <div class="col-sm-9 ">
+                           <p>我已经有一个帐户 <a><strong>立即登录!</strong></a></p>
+                        </div>
+
+                    </div>
+                    </form>
+                </div>
+            </div>
+            </div>
+
+        </div>
+    </div>
+<script type="text/javascript">
+    $(function(){
+        toastr.options = {
+            "closeButton": true,
+            "debug": true,
+            "progressBar": true,//显示下面的进度条
+            "positionClass": "toast-top-right",//右上toast-top-right//toast-bottom-left:左下
+            "showDuration": "400",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+            //错误 error //信息 info  //警告 warning //成功 success
+        }
+        $('#b').click(function () {
+            toastr.error("I am yanying");
+              $(this).button('loading'); //加载动画
+//            $("#fat").button('reset');//清除动画
+
+        })
+    })
+
+</script>
+</body>
+</html>

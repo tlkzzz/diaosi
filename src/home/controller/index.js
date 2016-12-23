@@ -26,4 +26,13 @@ export default class extends Base {
   fansAction(){
     return this.display();
   }
+  //注册
+  registerAction(){
+    return this.display();
+  }
+
+  checkregisterAction(){
+    //this.success(data)
+    return this.fail('注册失败!')
+  }
 }
