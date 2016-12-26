@@ -27,7 +27,7 @@ export default class extends Base {
     return this.display();
   }
   //注册
-  registerAction(){
+ async registerAction(){
     return this.display();
   }
 
@@ -35,4 +35,8 @@ export default class extends Base {
     //this.success(data)
     return this.fail('注册失败!')
   }
+  //登录
+    loginAction(){
+        return this.display()
+    }
 }
