@@ -106,4 +106,29 @@ export default class extends Base {
     addjokeimgAction(){
         return this.display()
     }
+    //bootstrap-fileinput上传图片控件
+    async fileupAction(){
+        var _this = this
+        var file = this.file("files") //三个重要属性 originalFilename,path,size,
+        console.log(file)
+        var fs = require("fs") //引入fs处理文件
+        //创建上传资源目录文件
+        think.mkdir(think.RESOURCE_PATH+"/static/upload");
+        let time = think.datetime(new Date, "YYYYMMDDHHmmss"); //文件名称
+        let type = file.originalFilename
+        let t=  type.split('.')[1]
+        let filename = time+'.'+t //文件名称+后缀
+        await  fs.rename(file.path, think.RESOURCE_PATH+"/static/upload/"+filename, function(err) {
+            if(err){
+                console.log('上传失败')
+                return  _this.fail('上传文件失败')
+            }else{
+                let path = "/static/upload/"+filename
+                console.log('上传成功')
+                var data ={path:path,msg:'上传成功'}
+                return _this.success(data)
+            }
+
+        })
+    }
 }

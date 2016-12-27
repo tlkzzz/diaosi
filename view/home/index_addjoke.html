@@ -29,22 +29,23 @@
                                 <div class="row">
                                     <form class="layui-form" action="">
                                         <div class="layui-form-item">
-                                            <label class="layui-form-label">标题</label>
-                                            <div class="layui-input-block">
-                                                <input type="text" name="name" required lay-verify="name"   placeholder="标题" autocomplete="off" class="layui-input">
+                                            <!--<label class="layui-form-label">标题</label>-->
+                                            <div class="layui-input-block-left">
+                                                <input type="hidden" name="id" value="1"/>
+                                                <input type="text" name="title" required lay-verify="title"   placeholder="标题" autocomplete="off" class="layui-input">
                                             </div>
                                         </div>
                                         <div class="layui-form-item">
-                                            <label class="layui-form-label">内容</label>
-                                            <div class="layui-input-block">
-                                                <textarea class="layui-textarea" id="LAY_demo2" style="display: none"></textarea>
+                                            <!--<label class="layui-form-label">内容</label>-->
+                                            <div class="layui-input-block-left">
+                                                <textarea class="layui-textarea" name='text' lay-verify="text"  id="LAY_demo2" style="display: none"></textarea>
                                             </div>
                                         </div>
 
                                         <div class="layui-form-item">
-                                            <div class="layui-input-block">
+                                            <div class="layui-input-block-left">
                                                 <button id="sub" class="layui-btn" lay-submit lay-filter="formDemo">立即发布</button>
-                                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                                <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
                                             </div>
                                         </div>
                                     </form>
@@ -93,40 +94,63 @@
 </body>
 
 <script type="text/javascript">
+    var index
+    var layedit
     $(function () {
-
+        layui.use('layedit', function(){
+             layedit = layui.layedit,$ = layui.jquery;
+            //构建一个默认的编辑器
+//        var index = layedit.build('LAY_demo2');
+            //自定义工具栏
+           index = layedit.build('LAY_demo2', {
+                tool: ['strong','italic','underline','del','|','face', 'left', 'center', '']
+                ,height: 200
+            })
+        });
     })
-    layui.use('layedit', function(){
-        var layedit = layui.layedit
-                ,$ = layui.jquery;
+    layui.use(['form'], function(){
+        var form = layui.form(),layer = layui.layer
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length >15){
+                    return '标题不能超过15个字符啊';
+                }
+            },
+            text: function(value){
+                var v =layedit.getText(index)
+                if(v.length < 3 || v.length > 250){
+                    return '内容3-250个字符啊';
+                }
+            },
 
-        //构建一个默认的编辑器
-        var index = layedit.build('LAY_demo1');
-
-        //编辑器外部操作
-        var active = {
-            content: function(){
-                alert(layedit.getContent(index)); //获取编辑器内容
-            }
-            ,text: function(){
-                alert(layedit.getText(index)); //获取编辑器纯文本内容
-            }
-            ,selection: function(){
-                alert(layedit.getSelection(index));
-            }
-        };
-
-        $('.site-demo-layedit').on('click', function(){
-            var type = $(this).data('type');
-            active[type] ? active[type].call(this) : '';
         });
 
-        //自定义工具栏
-        layedit.build('LAY_demo2', {
-            tool: ['face', 'link', 'unlink', '|', 'left', 'center', 'right']
-            ,height: 100
-        })
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+//            $('#sub').button('loading'); //加载动画
+            var content = layedit.getContent(index)
+            var text = layedit.getText(index)
+            var date = {
+                'id' : data.field.id,
+                'title' : data.field.title,
+                'text' : text,
+                'content' : content
+            }
+            console.log(date)
+//            $.post('<%=_web.url%>/home/index/registerchcek',data.field,function (result) {
+//                if(result.errno>0){ //失败
+//                    layer.msg(result.errmsg,{icon: 5,time:2000})
+//                    $("#sub").button('reset');//清除动画
+//                }else{//成功
+//                    layer.msg(result.data.msg,{icon: 6,time:2000})
+//                    setTimeout("javascript:location.href='<%=_web.url%>/home/index/index'", 2000);
+//                }
+//            })
+            return false;
+        });
     });
+
 
 </script>
 </html>
