@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>屌丝社区</title>
+    <%include include/head.html%>
+
+    <link href="<%=_web.static%>/static/js/plugins/summernote/summernote.css" rel="stylesheet">
+    <script src="<%=_web.static%>/static/js/plugins/summernote/summernote.js"></script>
+    <script src="<%=_web.static%>/static/js/plugins/summernote/lang/summernote-zh-CN.js"></script>
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content   animated fadeInRight blog">
+    <div class="row ">
+        <div class="col-sm-7 col-lg-offset-1">
+            <div class="tabs-container">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a  href="<%=_web.url%>/home/index/addjoke">段子</a>
+                    </li>
+                    <li class=""><a  href="<%=_web.url%>/home/index/addjokeimg">图片</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="ibox">
+                            <div class="ibox-content">
+                                <div class="row">
+                                    <form class="layui-form" action="">
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">标题</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="name" required lay-verify="name"   placeholder="标题" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">内容</label>
+                                            <div class="layui-input-block">
+                                                <textarea class="layui-textarea" id="LAY_demo2" style="display: none"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block">
+                                                <button id="sub" class="layui-btn" lay-submit lay-filter="formDemo">立即发布</button>
+                                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---->
+
+        </div>
+        <div class="col-sm-3">
+            <div class="ibox ">
+
+                <div class="ibox-content">
+                    <div class="tab-content">
+                        <div id="contact-1" class="tab-pane active">
+                            <div class="row m-b-lg">
+                                <div class="col-lg-4 text-center">
+                                    <h2>张有为</h2>
+
+                                    <div class="m-b-sm">
+                                        <img alt="image" class="img-circle" src="/static/img/a2.jpg" style="width: 62px">
+                                    </div>
+                                    <a class="btn btn-danger btn-circle btn-outline" type="button"><i class="fa fa-heart"></i> </a>
+                                </div>
+                                <div class="col-lg-8">
+                                    <h3>
+                                        个人简介
+                                    </h3>
+
+                                    <p>
+                                        李彦宏，百度公司创始人、董事长兼首席执行官，全面负责百度公司的战略规划和运营划和运营划和运营划和运营管理。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    $(function () {
+
+    })
+    layui.use('layedit', function(){
+        var layedit = layui.layedit
+                ,$ = layui.jquery;
+
+        //构建一个默认的编辑器
+        var index = layedit.build('LAY_demo1');
+
+        //编辑器外部操作
+        var active = {
+            content: function(){
+                alert(layedit.getContent(index)); //获取编辑器内容
+            }
+            ,text: function(){
+                alert(layedit.getText(index)); //获取编辑器纯文本内容
+            }
+            ,selection: function(){
+                alert(layedit.getSelection(index));
+            }
+        };
+
+        $('.site-demo-layedit').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        //自定义工具栏
+        layedit.build('LAY_demo2', {
+            tool: ['face', 'link', 'unlink', '|', 'left', 'center', 'right']
+            ,height: 100
+        })
+    });
+
+</script>
+</html>

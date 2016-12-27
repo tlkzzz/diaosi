@@ -19,7 +19,6 @@ export default class extends think.controller.base {
     }else{
       return this.assign('us', us)
     }
-    console.log('555')
   }
   //设置全局路径前置
   getConfig(){

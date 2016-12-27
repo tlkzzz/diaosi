@@ -6,107 +6,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>屌丝社区</title>
     <%include include/head.html%>
-    <link href="/static/css/plugins/toastr/toastr.min.css" rel="stylesheet">
 
-    <script src="/static/js/plugins/toastr/toastr.min.js"></script>
+
 </head>
 <body class="gray-bg">
 
 <div class="wrapper wrapper-content   animated fadeInRight blog">
     <div class="row ">
         <div class="col-sm-7 col-lg-offset-2">
-            <div class="ibox ">
+            <div class="ibox " >
                 <div class="ibox-content">
-                <form class="form-horizontal m-t" id="signupForm">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label"></label>
-                        <div class="col-sm-8">
-                           <h2>用户注册</h2>
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">用户名：</label>
-                        <div class="col-sm-8">
-                            <input  id="username" name="username" class="form-control" type="text" aria-required="true" aria-invalid="true" class="error">
-                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 3-20个字符</span>
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">E-mail：</label>
-                        <div class="col-sm-8">
-                            <input id="email" name="email" class="form-control" type="email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">手机：</label>
-                        <div class="col-sm-8">
-                            <input id="phone" name="phone" class="form-control" type="number">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">密码：</label>
-                        <div class="col-sm-8">
-                            <input id="password" name="password" class="form-control" type="password">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">确认密码：</label>
-                        <div class="col-sm-8">
-                            <input id="confirm_password" name="confirm_password" class="form-control" type="password">
-                            <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 请再次输入您的密码</span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-8 col-sm-offset-3">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" class="checkbox" id="agree" name="agree"> 我已经认真阅读并同意《屌丝社区使用协议》
-                                </label>
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend>账户注册</legend>
+                    </fieldset>
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">用户名</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="name" required lay-verify="name"   placeholder="请输入用户名" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-
-                        <div class="col-sm-8 col-sm-offset-3">
-                            <button  id="b"  class="btn btn-primary" type="button"><i class="fa fa-check"></i>立即注册</button>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">Email</label>
+                            <div class="layui-input-block">
+                                <input type="email" name="email" required  lay-verify="email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                            </div>
                         </div>
-                    </div>
-                </form>
-
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">手机</label>
+                            <div class="layui-input-block">
+                                <input type="number" name="phone" required  lay-verify="phone" placeholder="请输入手机" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">密码</label>
+                            <div class="layui-input-block">
+                                <input type="password" id="pass" name="pass" required  lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">密码</label>
+                            <div class="layui-input-block">
+                                <input type="password" name="pass2" required  lay-verify="pass2" placeholder="再输入密码" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button id="sub" class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
           </div>
-
-
         </div>
     </div>
 <script type="text/javascript">
-    $(function(){
-        toastr.options = {
-            "closeButton": true,
-            "debug": true,
-            "progressBar": true,//显示下面的进度条
-            "positionClass": "toast-top-right",//右上toast-top-right//toast-bottom-left:左下
-            "showDuration": "400",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-            //错误 error //信息 info  //警告 warning //成功 success
-        }
-        $('#b').click(function () {
-            toastr.error("I am yanying");
-              $(this).button('loading'); //加载动画
-//            $("#fat").button('reset');//清除动画
+    layui.use(['form'], function(){
+        var form = layui.form(),layer = layui.layer
+        //自定义验证规则
+        form.verify({
+            name: function(value){
+                if(value.length < 3){
+                    return '标题至少得3个字符啊';
+                }
+            },
+//            email:[/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/,'邮箱格式不正确啊'],
+//            phone:[/^1[34578]\d{9}$/,'手机号码格式不正确啊'],
+            pass: [/(.+){6,12}$/, '密码必须6到12位啊'],
+            pass2: function (value) {
+                var p = $("#pass").val();
+                if(value!=p){
+                    return '两次密码不一致啊'
+                }
+            }
+        });
 
-        })
-    })
-
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            $('#sub').button('loading'); //加载动画
+            $.post('<%=_web.url%>/home/index/registerchcek',data.field,function (result) {
+                if(result.errno>0){ //失败
+                    layer.msg(result.errmsg,{icon: 5,time:2000})
+                    $("#sub").button('reset');//清除动画
+                }else{//成功
+                    layer.msg(result.data.msg,{icon: 6,time:2000})
+                    setTimeout("javascript:location.href='<%=_web.url%>/home/index/index'", 2000);
+                }
+            })
+            return false;
+        });
+    });
 </script>
 </body>
 </html>
