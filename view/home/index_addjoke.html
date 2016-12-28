@@ -28,13 +28,7 @@
                             <div class="ibox-content">
                                 <div class="row">
                                     <form class="layui-form" action="">
-                                        <div class="layui-form-item">
-                                            <!--<label class="layui-form-label">标题</label>-->
-                                            <div class="layui-input-block-left">
-                                                <input type="hidden" name="id" value="1"/>
-                                                <input type="text" name="title" required lay-verify="title"   placeholder="标题" autocomplete="off" class="layui-input">
-                                            </div>
-                                        </div>
+
                                         <div class="layui-form-item">
                                             <!--<label class="layui-form-label">内容</label>-->
                                             <div class="layui-input-block-left">
@@ -109,14 +103,14 @@
         });
     })
     layui.use(['form'], function(){
-        var form = layui.form(),layer = layui.layer
+        var form = layui.form()
         //自定义验证规则
         form.verify({
-            title: function(value){
-                if(value.length >15){
-                    return '标题不能超过15个字符啊';
-                }
-            },
+//            title: function(value){
+//                if(value.length >15){
+//                    return '标题不能超过15个字符啊';
+//                }
+//            },
             text: function(value){
                 var v =layedit.getText(index)
                 if(v.length < 3 || v.length > 250){
@@ -133,7 +127,7 @@
             var text = layedit.getText(index)
             var date = {
                 'id' : data.field.id,
-                'title' : data.field.title,
+//                'title' : data.field.title,
                 'text' : text,
                 'content' : content
             }

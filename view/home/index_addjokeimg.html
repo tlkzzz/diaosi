@@ -28,14 +28,21 @@
                                 <div class="row">
                                     <form class="layui-form" >
                                         <div class="layui-form-item">
+                                            <!--<label class="layui-form-label">标题</label>-->
                                             <div class="layui-input-block-left">
-                                                <input id="file-zh" name="files"  class="file" type="file" multiple  data-preview-file-type="any"  >
-                                                <p class="help-block">支持jpg、png、gif格式，每张大小不超过2.0M</p>
+                                                <input id="id" type="hidden" name="id" value="2"/>
+                                                <input type="text" name="title" required lay-verify="title"   placeholder="说的啥撒" autocomplete="off" class="layui-input">
                                             </div>
                                         </div>
                                         <div class="layui-form-item">
                                             <div class="layui-input-block-left">
-                                                <a id="sub" class="layui-btn" >立即发布</a>
+                                                <input id="file-zh" name="files"   class="file" type="file" multiple  data-preview-file-type="any"  >
+                                                <!--<p class="help-block">支持jpg、png、gif格式，每张大小不超过2.0M</p>-->
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block-left">
+                                                <button id="sub" class="layui-btn" lay-submit lay-filter="formDemo">立即发布</button>
                                                 <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
                                             </div>
                                         </div>
@@ -89,28 +96,31 @@
 </div>
 </body>
 <script type="text/javascript">
-    var layer
-
+    var fileList = []
     $(function () {
-        var fileList = []
-        layui.use(['layer'], function(){
-            layer = layui.layer
-        });
         //上传成功后的删除事件
         $('#file-zh').on('filesuccessremove', function(event, previewId) {
             console.log(previewId)
             //将上传成功的根据id遍历删除
             for (var i = 0; i < fileList.length; i++) {
                 if (fileList[i].ids== previewId) {
-                    delete fileList[i] //删除数组元素
+                    fileList.splice(i)
+//                    delete fileList[i] //删除数组元素
                 }
             }
+            $('#file-zh').fileinput('refresh'); //刷新控件
             console.log(fileList)
         });
+//        //选择图片后
+        $('#file-zh').on('fileselect', function() {
+            $('.kv-file-zoom').hide() //隐藏预览图标
+        });
+
         //移除事件
         $('#file-zh').on('fileclear', function() {
             //清空数组
             fileList=[]
+            $('#file-zh').fileinput('refresh'); //刷新控件
         });
 
         //上传成功回调
@@ -121,6 +131,10 @@
             }else{
                 //将上传成功的图片与id放入到数组中
                 fileList.push({fn:obj.data.path,ids:previewId})
+                $('.fileinput-upload-button').hide()//隐藏上传
+                $('.btn-file').hide()//隐藏选择图片按钮
+
+//
             }
             console.log(fileList)
         });
@@ -136,14 +150,47 @@
             // get message
             layer.msg(msg,{time: 2000, icon:5})
         });
+    })
+    $('#file-zh').fileinput({
+        language: 'zh',
+        multiple:'true',
+//        showZoom:false, //是否隐藏预览
+        showUpload: true, //是否显示上传按钮
+        showRemove : true, //显示移除按钮
+        overwriteInitial: false,
+        uploadUrl: '/home/index/fileup',
+        allowedFileExtensions : ['jpg', 'png','gif','jpeg'],
+        enctype: 'multipart/form-data',
+        maxFileCount: 1, //表示允许同时上传的最大文件个数
+        maxFileSize : 4000, //单个文件大小
+        msgFilesTooMany: "选择文件数量1个,单个4M,支持['jpg', 'png','gif','jpeg']",
+//        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+//        initialPreview:'' //显示的初始化预览内容。你可以传入一个简单的HTML标签用于显示图片
+    });
+    layui.use(['form','layer'], function(){
+        var form = layui.form(),layer = layui.layer
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length >15){
+                    return '标题不能超过15个字符啊';
+                }
+            },
+        });
 
-        $('#sub').click(function () {
+        //监听提交
+        form.on('submit(formDemo)', function(data){
             if(fileList.length==0){
-                layer.msg('亲,至少选择一张图片啊',{time: 2000, icon:5})
+                layer.msg('亲,必须上传一张图片啊',{time: 2000, icon:5})
                 return false
             }else{
-//                $('#sub').button('loading'); //加载动画
-//                $.post('<%=_web.url%>/home/index/registerchcek',data.field,function (result) {
+                var  title = data.field.title
+                var imgurl = fileList[0].fn
+                var id = $('#id').val()
+                var data = {title:title,imgurl:imgurl,id:id}
+                console.log(data)
+                $('#sub').button('loading'); //加载动画
+//                $.post('<%=_web.url%>/home/index/registerchcek',data,function (result) {
 //                    if(result.errno>0){ //失败
 //                        layer.msg(result.errmsg,{icon: 5,time:2000})
 //                        $("#sub").button('reset');//清除动画
@@ -153,25 +200,9 @@
 //                    }
 //                })
             }
-
-        })
-
-    })
-    $('#file-zh').fileinput({
-        language: 'zh',
-//        multiple:'true',
-        uploadUrl: '/home/index/fileup',
-        allowedFileExtensions : ['jpg', 'png','gif'],
-        enctype: 'multipart/form-data',
-//        showCancel :false, //是否显示取消按钮
-//        validateInitialCount:true,
-        maxFileCount: 1, //表示允许同时上传的最大文件个数
-        maxFileSize : 2000, //单个文件大小
-        msgFilesTooMany: "选择上传的文件数量最多1个 超过允许的最大数值2M！",
-//        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
-        initialPreview:'' //显示的初始化预览内容。你可以传入一个简单的HTML标签用于显示图片
+            return false;
+        });
     });
-
 
 </script>
 </html>
