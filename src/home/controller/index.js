@@ -9,6 +9,8 @@ export default class extends Base {
    */
   indexAction(){
     //auto render template file index_index.html
+      let is_zdjz =  this.config('const').IS_ZDJZ
+      // console.log(is_zdjz)
     return this.display();
   }
   infoAction(){
