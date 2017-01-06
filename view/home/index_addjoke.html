@@ -28,7 +28,7 @@
                             <div class="ibox-content">
                                 <div class="row">
                                     <form class="layui-form" action="">
-
+                                        <input type="hidden" name="classid" value="1"/>
                                         <div class="layui-form-item">
                                             <!--<label class="layui-form-label">内容</label>-->
                                             <div class="layui-input-block-left">
@@ -126,21 +126,28 @@
             var content = layedit.getContent(index)
             var text = layedit.getText(index)
             var date = {
-                'id' : data.field.id,
+                'class_id' : data.field.classid,
 //                'title' : data.field.title,
                 'text' : text,
                 'content' : content
             }
             console.log(date)
-//            $.post('<%=_web.url%>/home/index/registerchcek',data.field,function (result) {
-//                if(result.errno>0){ //失败
-//                    layer.msg(result.errmsg,{icon: 5,time:2000})
-//                    $("#sub").button('reset');//清除动画
-//                }else{//成功
-//                    layer.msg(result.data.msg,{icon: 6,time:2000})
+            $.post('<%=_web.url%>/home/index/savejoke',date,function (result) {
+
+                if(result.errno>0){ //失败
+                    if(result.errno==10001){
+//                        layer.msg(result.errmsg,{icon: 5,time:2000})
+                        active.notice()
+                    }else{
+                        layer.msg(result.errmsg,{icon: 5,time:2000})
+                        $("#sub").button('reset');//清除动画
+                    }
+
+                }else{//成功
+                    layer.msg(result.data.msg,{icon: 6,time:2000})
 //                    setTimeout("javascript:location.href='<%=_web.url%>/home/index/index'", 2000);
-//                }
-//            })
+                }
+            })
             return false;
         });
     });

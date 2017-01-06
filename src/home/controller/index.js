@@ -133,4 +133,10 @@ export default class extends Base {
 
         })
     }
+    //添加内涵段子
+   async savejokeAction(){
+        let param = await this.post()
+       console.log(param)
+       return this.fail('添加失败')
+    }
 }

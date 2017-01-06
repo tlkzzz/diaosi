@@ -10,6 +10,7 @@ export default class extends think.controller.base {
   async __before() {
     await this.isUser() //登录验证
     await this.getConfig()//
+    await this.isLogin()  //是否登陆
   }
   //是否登陆
  async isUser(){
@@ -28,4 +29,14 @@ export default class extends think.controller.base {
     }
     this.assign('_web',web);
   }
+    //是否登陆
+  async  isLogin(){
+        let action =await  this.http.action
+      if(action == 'savejoke'){
+          let us = await this.session('user')
+          if (think.isEmpty(us)){
+              return this.fail(10001,'未登录,请登录')
+          }
+      }
+    }
 }
